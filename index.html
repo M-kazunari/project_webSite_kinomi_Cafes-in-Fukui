@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Cafe kinomi - 自然の恵みをいかしたこだわりのコーヒーとスイーツをご提供するカフェです。"
+        />
+        <meta
+            name="keywords"
+            content="カフェ, コーヒー, スイーツ, kinomi, きのみ"
+        />
+        <meta name="author" content="kinomi cafe" />
+        <title>kinomi cafe | きのみカフェ</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-en">kinomi</span>
+                        <span class="logo-ja">きのみカフェ</span>
+                    </a>
+                </div>
+                <nav class="global-nav">
+                    <ul>
+                        <li><a href="#concept">コンセプト</a></li>
+                        <li><a href="#menu">メニュー</a></li>
+                        <li><a href="#gallery">ギャラリー</a></li>
+                        <li><a href="#access">アクセス</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+                <button class="hamburger" aria-label="メニューを開く">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+        <script>
+            // スクロール検知：ヘッダーに .scrolled クラスを付与
+            const header = document.querySelector(".site-header");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 10) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            });
+
+            // ハンバーガーメニューの開閉
+            const hamburger = document.querySelector(".hamburger");
+            const nav = document.querySelector(".global-nav");
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("is-active");
+                nav.classList.toggle("is-open");
+                const isOpen = nav.classList.contains("is-open");
+                hamburger.setAttribute(
+                    "aria-label",
+                    isOpen ? "メニューを閉じる" : "メニューを開く",
+                );
+            });
+
+            // ナビリンクをクリックしたらメニューを閉じる
+            document.querySelectorAll(".global-nav a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    hamburger.classList.remove("is-active");
+                    nav.classList.remove("is-open");
+                    hamburger.setAttribute("aria-label", "メニューを開く");
+                });
+            });
+        </script>
+    </body>
+</html>

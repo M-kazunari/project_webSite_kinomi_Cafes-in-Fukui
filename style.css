@@ -1,0 +1,220 @@
+/* =====================
+   Base & Reset
+   ===================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-primary: #4a3728;
+    --color-secondary: #8b6f5e;
+    --color-accent: #c8a882;
+    --color-bg: #faf8f5;
+    --color-text: #3a2e28;
+    --color-text-light: #7a6a60;
+    --color-white: #ffffff;
+    --font-en: "Lato", sans-serif;
+    --font-ja: "Noto Serif JP", serif;
+    --header-height: 80px;
+    --transition: 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-ja);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.8;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =====================
+   Site Header
+   ===================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: rgba(250, 248, 245, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(200, 168, 130, 0.3);
+    z-index: 1000;
+    transition: box-shadow var(--transition);
+}
+
+.site-header.scrolled {
+    box-shadow: 0 2px 20px rgba(74, 55, 40, 0.1);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* =====================
+   Logo
+   ===================== */
+.logo a {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-en {
+    font-family: var(--font-en);
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    text-transform: lowercase;
+}
+
+.logo-ja {
+    font-family: var(--font-ja);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--color-secondary);
+}
+
+/* =====================
+   Global Navigation
+   ===================== */
+.global-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.global-nav a {
+    font-family: var(--font-ja);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    position: relative;
+    padding-bottom: 4px;
+    transition: color var(--transition);
+}
+
+.global-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width var(--transition);
+}
+
+.global-nav a:hover {
+    color: var(--color-secondary);
+}
+
+.global-nav a:hover::after {
+    width: 100%;
+}
+
+/* =====================
+   Hamburger Button
+   ===================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background-color: var(--color-primary);
+    transition:
+        transform var(--transition),
+        opacity var(--transition);
+    transform-origin: center;
+}
+
+.hamburger.is-active span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+}
+
+.hamburger.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.is-active span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* =====================
+   Responsive
+   ===================== */
+@media (max-width: 768px) {
+    .header-inner {
+        padding: 0 20px;
+    }
+
+    .global-nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background-color: rgba(250, 248, 245, 0.98);
+        padding: 24px 0 32px;
+        transform: translateY(-110%);
+        opacity: 0;
+        transition:
+            transform var(--transition),
+            opacity var(--transition);
+        border-bottom: 1px solid rgba(200, 168, 130, 0.3);
+    }
+
+    .global-nav.is-open {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .global-nav ul {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .global-nav a {
+        font-size: 1rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
