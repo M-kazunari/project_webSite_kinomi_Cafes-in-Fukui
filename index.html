@@ -9,75 +9,549 @@
         />
         <meta
             name="keywords"
-            content="カフェ, コーヒー, スイーツ, お食事, kinomi, きのみ, 福井県, 越前町,海のカフェ"
+            content="カフェ, コーヒー, スイーツ, お食事, kinomi, きのみ, 福井県, 越前町, 海のカフェ"
         />
         <meta name="author" content="kinomi cafe" />
-        <title>kinomi cafe | きのみカフェ</title>
+        <title>Cafe kinomi | きのみカフェ</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!--和文フォント-->
         <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <!--欧文フォント-->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
             rel="stylesheet"
         />
     </head>
     <body>
+        <!-- ========== HEADER ========== -->
         <header class="site-header">
+            <!-- チェックボックス：ハンバーガーメニューの開閉を制御（非表示） -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
             <div class="header-inner">
-                <div class="logo">
-                    <a href="index.html">
-                        <span class="logo-en">kinomi</span>
-                        <span class="logo-ja">きのみカフェ</span>
+                <!-- ロゴ（白背景側） -->
+                <div class="header-logo">
+                    <a href="index.html" class="logo-link">
+                        <span class="logo-main">樹の海</span>
+                        <span class="logo-sub">kinomi</span>
                     </a>
                 </div>
-                <nav class="global-nav">
-                    <ul>
+
+                <!-- ナビゲーション（プライマリーカラー側） -->
+                <nav class="header-nav" aria-label="グローバルナビゲーション">
+                    <ul class="nav-list">
                         <li><a href="#concept">コンセプト</a></li>
                         <li><a href="#menu">メニュー</a></li>
-                        <li><a href="#gallery">ギャラリー</a></li>
+                        <li><a href="#introduction">店舗紹介</a></li>
                         <li><a href="#access">アクセス</a></li>
                         <li><a href="#contact">お問い合わせ</a></li>
                     </ul>
                 </nav>
-                <button class="hamburger" aria-label="メニューを開く">
+
+                <!-- ハンバーガーボタン（label要素でチェックボックスを操作） -->
+                <label
+                    for="nav-toggle"
+                    class="hamburger"
+                    aria-label="メニューを開閉する"
+                >
                     <span></span>
                     <span></span>
                     <span></span>
-                </button>
+                </label>
             </div>
+            <!-- /.header-inner -->
         </header>
-        <script>
-            // スクロール検知：ヘッダーに .scrolled クラスを付与
-            const header = document.querySelector(".site-header");
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > 10) {
-                    header.classList.add("scrolled");
-                } else {
-                    header.classList.remove("scrolled");
-                }
-            });
 
-            // ハンバーガーメニューの開閉
-            const hamburger = document.querySelector(".hamburger");
-            const nav = document.querySelector(".global-nav");
-            hamburger.addEventListener("click", () => {
-                hamburger.classList.toggle("is-active");
-                nav.classList.toggle("is-open");
-                const isOpen = nav.classList.contains("is-open");
-                hamburger.setAttribute(
-                    "aria-label",
-                    isOpen ? "メニューを閉じる" : "メニューを開く",
-                );
-            });
+        <!-- ========== MAIN ========== -->
+        <main>
+            <!-- ========== HERO ========== -->
+            <section class="hero" id="hero">
+                <!-- 背景画像 -->
+                <figure class="hero-bg">
+                    <img
+                        src="img/hero.jpg"
+                        alt="テーブルの上に置かれたコーヒーカップ"
+                        loading="eager"
+                    />
+                </figure>
 
-            // ナビリンクをクリックしたらメニューを閉じる
-            document.querySelectorAll(".global-nav a").forEach((link) => {
-                link.addEventListener("click", () => {
-                    hamburger.classList.remove("is-active");
-                    nav.classList.remove("is-open");
-                    hamburger.setAttribute("aria-label", "メニューを開く");
-                });
-            });
-        </script>
+                <!-- オーバーレイ（テキスト可読性向上） -->
+                <div class="hero-overlay"></div>
+
+                <!-- テキストコンテンツ -->
+                <div class="hero-content">
+                    <p class="hero-label">Cafe kinomi</p>
+                    <h1 class="hero-title">
+                        <span>海を感じる、</span>
+                        <span>やすらぎの一杯。</span>
+                    </h1>
+                    <p class="hero-desc">
+                        福井・越前の海辺にたたずむ、きのみカフェ
+                    </p>
+                    <a href="#concept" class="hero-btn">詳しく見る</a>
+                </div>
+
+                <!-- スクロールインジケーター -->
+                <div class="hero-scroll">
+                    <span class="hero-scroll-text">Scroll</span>
+                    <div class="hero-scroll-bar"></div>
+                </div>
+            </section>
+            <!-- /.hero -->
+
+            <!-- ========== CONCEPT ========== -->
+            <section class="concept" id="concept">
+                <div class="concept-inner">
+                    <!-- テキストエリア -->
+                    <div class="concept-text">
+                        <p class="section-label">Concept</p>
+                        <h2 class="concept-heading">
+                            木の実が育つように、<br />
+                            ゆっくりと。
+                        </h2>
+                        <p class="concept-lead">
+                            越前の海と緑に囲まれた、静かな時間。
+                        </p>
+                        <p class="concept-body">
+                            福井県越前町の海辺にたたずむ「きのみカフェ」は、<br />
+                            地元の恵みを活かしたコーヒーとお食事をご提供します。<br />
+                            波の音に耳を澄ませながら、木の実が静かに熟すように、<br />
+                            ここでしか味わえないゆったりとした時間をお過ごしください。
+                        </p>
+                    </div>
+                    <!-- /.concept-text -->
+
+                    <!-- ロゴ画像エリア -->
+                    <div class="concept-logo">
+                        <img
+                            src="img/logo.png"
+                            alt="Cafe kinomi 樹の海 ロゴ"
+                            loading="lazy"
+                        />
+                    </div>
+                    <!-- /.concept-logo -->
+                </div>
+                <!-- /.concept-inner -->
+            </section>
+            <!-- /.concept -->
+
+            <!-- ========== MENU ========== -->
+            <section class="menu" id="menu">
+                <div class="menu-inner">
+                    <!-- ラジオボタン（非表示）タブ切り替えハック -->
+                    <input
+                        type="radio"
+                        name="menu-tab"
+                        id="tab-drink"
+                        checked
+                    />
+                    <input type="radio" name="menu-tab" id="tab-food" />
+                    <input type="radio" name="menu-tab" id="tab-sweets" />
+
+                    <!-- セクションヘッダー -->
+                    <div class="section-header">
+                        <p class="section-label">Menu</p>
+                        <h2 class="menu-heading">メニュー</h2>
+                    </div>
+
+                    <!-- タブボタン -->
+                    <div class="menu-tabs">
+                        <label for="tab-drink">ドリンク</label>
+                        <label for="tab-food">フード</label>
+                        <label for="tab-sweets">スイーツ</label>
+                    </div>
+
+                    <!-- パネル -->
+                    <div class="menu-panels">
+                        <!-- ドリンク -->
+                        <div class="menu-panel panel-drink">
+                            <ul class="menu-list">
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            ブレンドコーヒー
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            越前の清水で丁寧に抽出した定番ブレンド
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥500</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">カフェラテ</p>
+                                        <p class="menu-item-desc">
+                                            濃厚なエスプレッソとまろやかなミルク
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥600</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            越前抹茶ラテ
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            地元産抹茶を使ったやさしい甘さ
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥650</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            アイスコーヒー
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            すっきりとした後味の冷製コーヒー
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥550</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            越前ほうじ茶
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            香り豊かな地元産ほうじ茶
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥450</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            フルーツソーダ
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            季節のフルーツを使ったさわやかな一杯
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥600</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-drink -->
+
+                        <!-- フード -->
+                        <div class="menu-panel panel-food">
+                            <ul class="menu-list">
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            越前そばセット
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            石臼挽きの地元産そば粉使用
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥980</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            地魚のオープンサンド
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            越前港直送の新鮮な魚を使用
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥850</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            越前野菜のキッシュ
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            地元農家から届く旬の野菜たっぷり
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥780</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            本日のスープセット
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            日替わりスープとパンのセット
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥650</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-food -->
+
+                        <!-- スイーツ -->
+                        <div class="menu-panel panel-sweets">
+                            <ul class="menu-list">
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            越前抹茶のロールケーキ
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            地元産抹茶を贅沢に使用
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥650</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            地元フルーツのタルト
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            季節のフルーツをのせた自家製タルト
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥700</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            スコーン（2個）
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            バターの香り豊かなプレーンスコーン
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥500</p>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="menu-item-info">
+                                        <p class="menu-item-name">
+                                            アフォガート
+                                        </p>
+                                        <p class="menu-item-desc">
+                                            濃厚エスプレッソとバニラアイスの絶妙な組み合わせ
+                                        </p>
+                                    </div>
+                                    <p class="menu-item-price">¥680</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-sweets -->
+                    </div>
+                    <!-- /.menu-panels -->
+                </div>
+                <!-- /.menu-inner -->
+            </section>
+            <!-- /.menu -->
+
+            <!-- ========== INTRODUCTION ========== -->
+            <section class="introduction" id="introduction">
+                <div class="introduction-inner">
+                    <div class="section-header">
+                        <p class="section-label">About</p>
+                        <h2 class="introduction-heading">店舗紹介</h2>
+                    </div>
+                    <p class="introduction-lead">
+                        海と森が交わる、越前のちいさなカフェ。
+                    </p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-icon">01</div>
+                            <h3 class="feature-title">地元素材へのこだわり</h3>
+                            <p class="feature-desc">
+                                越前の海と大地が育てた旬の食材を厳選。地元農家や越前港の漁師たちと連携し、新鮮な恵みをそのままにお届けします。
+                            </p>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">02</div>
+                            <h3 class="feature-title">丁寧に淹れる一杯</h3>
+                            <p class="feature-desc">
+                                厳選した豆を一杯ずつハンドドリップで丁寧に抽出。コーヒーの香りと共に、木の実が育つようなゆったりとした時間をどうぞ。
+                            </p>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">03</div>
+                            <h3 class="feature-title">海を望む開放的な空間</h3>
+                            <p class="feature-desc">
+                                越前海岸を一望できる大きな窓が自慢の店内。波の音と潮風を感じながら、ここでしか味わえない特別なひとときをお過ごしください。
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- /.introduction -->
+
+            <!-- ========== ACCESS ========== -->
+            <section class="access" id="access">
+                <div class="access-inner">
+                    <div class="section-header">
+                        <p class="section-label">Access</p>
+                        <h2 class="access-heading">アクセス</h2>
+                    </div>
+                    <div class="access-content">
+                        <!-- マッププレースホルダー -->
+                        <div class="access-map">
+                            <div class="map-placeholder">
+                                <p>MAP</p>
+                                <span>Echizen-cho, Fukui</span>
+                            </div>
+                        </div>
+                        <!-- アクセス情報 -->
+                        <div class="access-info">
+                            <dl class="access-detail">
+                                <div class="access-row">
+                                    <dt>住所</dt>
+                                    <dd>
+                                        〒916-0000<br />福井県丹生郡越前町〇〇〇
+                                    </dd>
+                                </div>
+                                <div class="access-row">
+                                    <dt>営業時間</dt>
+                                    <dd>10:00 〜 17:00（L.O. 16:30）</dd>
+                                </div>
+                                <div class="access-row">
+                                    <dt>定休日</dt>
+                                    <dd>火曜日・水曜日</dd>
+                                </div>
+                                <div class="access-row">
+                                    <dt>TEL</dt>
+                                    <dd>
+                                        <a href="tel:0778000000"
+                                            >0778-〇〇-〇〇〇〇</a
+                                        >
+                                    </dd>
+                                </div>
+                                <div class="access-row">
+                                    <dt>駐車場</dt>
+                                    <dd>あり（〇〇台）</dd>
+                                </div>
+                            </dl>
+                            <a
+                                href="https://maps.google.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="access-btn"
+                                >Google マップで見る</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /.access -->
+
+            <!-- ========== CONTACT ========== -->
+            <section class="contact" id="contact">
+                <div class="contact-inner">
+                    <div class="section-header">
+                        <p class="section-label section-label--light">
+                            Contact
+                        </p>
+                        <h2 class="contact-heading">お問い合わせ</h2>
+                    </div>
+                    <p class="contact-lead">
+                        ご予約・お問い合わせは下記フォームよりお気軽にどうぞ。
+                    </p>
+                    <form class="contact-form" action="#" method="post">
+                        <div class="form-group">
+                            <label class="form-label" for="form-name">
+                                お名前 <span class="form-required">必須</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="form-name"
+                                name="name"
+                                class="form-input"
+                                placeholder="山田 花子"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="form-email">
+                                メールアドレス
+                                <span class="form-required">必須</span>
+                            </label>
+                            <input
+                                type="email"
+                                id="form-email"
+                                name="email"
+                                class="form-input"
+                                placeholder="example@mail.com"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="form-subject"
+                                >件名</label
+                            >
+                            <input
+                                type="text"
+                                id="form-subject"
+                                name="subject"
+                                class="form-input"
+                                placeholder="ご予約について"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="form-message">
+                                メッセージ
+                                <span class="form-required">必須</span>
+                            </label>
+                            <textarea
+                                id="form-message"
+                                name="message"
+                                class="form-textarea"
+                                rows="6"
+                                placeholder="ご用件をお書きください..."
+                                required
+                            ></textarea>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn">
+                                送信する
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- /.contact -->
+        </main>
+
+        <!-- ========== FOOTER ========== -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <!-- フッターロゴ・キャッチ -->
+                <div class="footer-brand">
+                    <p class="footer-logo-text">kinomi</p>
+                    <p class="footer-catch">海辺のちいさなカフェ</p>
+                </div>
+
+                <!-- フッターナビ -->
+                <nav class="footer-nav" aria-label="フッターナビゲーション">
+                    <ul class="footer-nav-list">
+                        <li><a href="#concept">コンセプト</a></li>
+                        <li><a href="#menu">メニュー</a></li>
+                        <li><a href="#introduction">店舗紹介</a></li>
+                        <li><a href="#access">アクセス</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+
+                <!-- 店舗情報 -->
+                <div class="footer-info">
+                    <p><span>住所</span>福井県丹生郡越前町〇〇〇</p>
+                    <p><span>営業時間</span>10:00 〜 17:00</p>
+                    <p><span>定休日</span>火曜日・水曜日</p>
+                    <p><span>TEL</span>0778-〇〇-〇〇〇〇</p>
+                </div>
+            </div>
+
+            <!-- コピーライト -->
+            <div class="footer-copyright">
+                <p>&copy; 2025 kinomi cafe. All Rights Reserved.</p>
+            </div>
+        </footer>
     </body>
 </html>
