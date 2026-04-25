@@ -497,6 +497,16 @@ main {
 }
 
 /* =====================
+   セクション区切り線
+   ===================== */
+.menu,
+.introduction,
+.access,
+.contact {
+    border-top: 2px solid var(--color-primary);
+}
+
+/* =====================
    Menu — モバイル基準
    ===================== */
 .menu {
