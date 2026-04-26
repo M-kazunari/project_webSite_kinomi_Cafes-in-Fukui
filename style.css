@@ -11,6 +11,9 @@
     /* ベースカラー：背景（清潔感） */
     --color-bg-white: #ffffff;
     --color-bg-light-gray: #f7f7f7;
+    --color-bg-lightblue-high: #add8e6; /* lightblue そのもの */
+    --color-bg-lightblue-middle: #d4edf5; /* より薄い水色 */
+    --color-bg-lightblue-low: #e8f6fb; /* かなり薄い水色 */
 
     /* テキストカラー */
     --color-text-main: #333333;
@@ -48,7 +51,7 @@ html {
 body {
     font-family: var(--font-ja);
     color: var(--color-text-main);
-    background-color: var(--color-bg-white);
+    background-color: var(--color-bg-lightblue-low);
     line-height: 1.8;
 }
 
@@ -66,7 +69,31 @@ img {
     height: auto;
     display: block;
 }
+/* =====================
+   Section Major Title（共通）
+   ===================== */
+.major-item {
+    display: inline-block;
+    font-family: var(--font-en);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    padding-bottom: 0;
+    position: relative;
+}
 
+/* 下線 */
+.major-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-accent);
+}
 /* =====================
    Site Header
    ===================== */
@@ -76,9 +103,9 @@ img {
     left: 0;
     width: 100%;
     height: var(--header-height);
+    background-color: var(--color-bg-lightblue-low);
     z-index: 1000;
 }
-
 /* =====================
    チェックボックス（非表示）
    ハンバーガーメニューの開閉を制御する
@@ -86,24 +113,14 @@ img {
 .nav-toggle {
     display: none;
 }
-
 /* =====================
    Header Inner
-   白（左）→ プライマリーカラー（右）グラデーション
    ===================== */
 .header-inner {
     display: flex;
     align-items: stretch;
     height: var(--header-height);
-    background: linear-gradient(
-        to right,
-        var(--color-bg-white) 0%,
-        var(--color-bg-white) 22%,
-        rgba(0, 49, 105, 0.5) 52%,
-        var(--color-primary) 100%
-    );
 }
-
 /* =====================
    Header Logo
    ===================== */
@@ -113,10 +130,10 @@ img {
     padding: 0 24px 0 16px;
     flex-shrink: 0;
 }
-
 .logo-link {
     display: flex;
     flex-direction: column;
+    align-items: center;
     line-height: 1.2;
 }
 
@@ -132,11 +149,10 @@ img {
 .logo-sub {
     font-family: var(--font-ja);
     font-size: 0.7rem;
-    font-weight: 400;
+    font-weight: bold;
     letter-spacing: 0.25em;
-    color: var(--color-text-sub);
+    color: var(--color-text-main);
 }
-
 /* =====================
    Header Navigation
    モバイル：スライドダウンメニュー（初期は非表示）
@@ -159,7 +175,7 @@ img {
 }
 
 /* チェックボックスON → ナビを表示 */
-.nav-toggle:checked ~ .header-inner .header-nav {
+.nav-toggle:checked ~ .header-nav {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
@@ -200,7 +216,6 @@ img {
 .nav-list a:hover::after {
     width: 100%;
 }
-
 /* =====================
    Hamburger Button
    モバイル：常時表示（label要素）
@@ -218,31 +233,114 @@ img {
     cursor: pointer;
     flex-shrink: 0;
 }
-
-/* グラデーション右側（紺色）に重なるので白で表示 */
 .hamburger span {
     display: block;
-    width: 26px;
+    width: 24px;
     height: 2px;
-    background-color: var(--color-bg-white);
-    border-radius: 2px;
+    background-color: var(--color-primary);
+    border-radius: 1px;
     transition:
         transform var(--transition),
         opacity var(--transition);
-    transform-origin: center;
 }
-
 /* チェックボックスON → ✕ アニメーション */
-.nav-toggle:checked ~ .header-inner .hamburger span:nth-child(1) {
+.nav-toggle:checked ~ .hamburger span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
 
-.nav-toggle:checked ~ .header-inner .hamburger span:nth-child(2) {
+.nav-toggle:checked ~ .hamburger span:nth-child(2) {
     opacity: 0;
 }
 
-.nav-toggle:checked ~ .header-inner .hamburger span:nth-child(3) {
+.nav-toggle:checked ~ .hamburger span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+/* =====================
+   タブレット（768px 以上）
+   ハンバーガーメニュー維持・サイズ・余白を調整
+   ===================== */
+@media (min-width: 768px) {
+    :root {
+        --header-height: 72px;
+    }
+
+    .header-inner {
+        padding: 0 32px;
+    }
+
+    .logo-main {
+        font-size: 1.8rem;
+    }
+
+    .logo-sub {
+        font-size: 0.75rem;
+    }
+
+    .header-nav {
+        padding: 32px 32px 40px;
+    }
+
+    .nav-list {
+        gap: 28px;
+    }
+
+    .nav-list a {
+        font-size: 1.05rem;
+    }
+}
+
+/* =====================
+   PC（1024px 以上）
+   横並びナビ表示・ハンバーガー非表示
+   ===================== */
+@media (min-width: 1024px) {
+    :root {
+        --header-height: 80px;
+    }
+
+    .header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 48px;
+        align-items: center;
+    }
+
+    /* ハンバーガーボタンを非表示 */
+    .hamburger {
+        display: none;
+    }
+
+    /* ナビゲーションをヘッダー内に横並び表示 */
+    .header-nav {
+        position: static;
+        width: auto;
+        padding: 0;
+        background-color: transparent;
+        border-top: none;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+        transition: none;
+        margin-left: auto;
+        z-index: auto;
+    }
+
+    /* ナビリストを横並び */
+    .nav-list {
+        flex-direction: row;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .nav-list a {
+        color: var(--color-primary);
+        font-size: 0.95rem;
+    }
+
+    .nav-list a::after {
+        background-color: var(--color-accent);
+    }
 }
 
 /* =====================
@@ -251,7 +349,6 @@ img {
 main {
     margin-top: var(--header-height);
 }
-
 /* =====================
    Hero — モバイル基準
    ===================== */
@@ -261,7 +358,6 @@ main {
     height: calc(100svh - var(--header-height));
     overflow: hidden;
 }
-
 /* 背景画像 */
 .hero-bg {
     position: absolute;
@@ -288,24 +384,33 @@ main {
         rgba(0, 0, 0, 0.7) 100%
     );
 }
-
 /* テキストコンテンツ：モバイルは中央寄せ・下部配置 */
 .hero-content {
+    /* 初期設定 */
     position: absolute;
-    bottom: 80px;
-    left: 0;
-    right: 0;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 900px);
     padding: 0 24px;
     text-align: center;
-    color: var(--color-bg-white);
 }
+.hero-bottom {
+    position: absolute;
+    left: 50%;
+    bottom: 120px;
+    transform: translateX(-50%);
+    text-align: center;
+    width: min(90%, 640px);
+    z-index: 2;   
 
+}
 .hero-label {
     font-family: var(--font-en);
+    color: var(--color-text-main);
     font-size: 0.75rem;
     font-weight: 300;
     letter-spacing: 0.35em;
-    color: rgba(255, 255, 255, 0.75);
     margin-bottom: 12px;
     text-transform: uppercase;
 }
@@ -313,14 +418,23 @@ main {
 .hero-title {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 4px;
     font-family: var(--font-ja);
     font-size: 1.9rem;
     font-weight: 700;
     line-height: 1.5;
     letter-spacing: 0.1em;
-    color: var(--color-bg-white);
+    color: var(--color-text-main);
+    transform: translateX(15px);
     margin-bottom: 16px;
+}
+/* 改行制御 */
+.br-sp {
+    display: inline;
+}
+.br-pc {
+    display: none;
 }
 
 .hero-desc {
@@ -330,7 +444,6 @@ main {
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 32px;
 }
-
 /* CTAボタン */
 .hero-btn {
     display: inline-block;
@@ -353,7 +466,7 @@ main {
 /* スクロールインジケーター */
 .hero-scroll {
     position: absolute;
-    bottom: 24px;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -405,532 +518,1204 @@ main {
         transform-origin: bottom;
     }
 }
+/* =====================
+   Hero — タブレット（768px 以上）
+   フォント・余白を拡大
+   ===================== */
+   @media (min-width: 768px) {
+    /* 改行制御 */
+    .br-sp {
+        display: none;
+    }
+    .br-pc {
+        display: inline;
+    }
+    .hero-content {
+        bottom: 100px;
+        padding: 0 48px;
+    }
+    .hero-bottom {
+        bottom: 200px;
+    }
+
+    .hero-label {
+        font-size: 0.85rem;
+        margin-bottom: 16px;
+    }
+
+    .hero-title {
+        font-size: 2.6rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        font-size: 0.9rem;
+        margin-bottom: 40px;
+    }
+
+    .hero-btn {
+        padding: 14px 48px;
+        font-size: 0.9rem;
+    }
+
+    .hero-scroll {
+        bottom: 16px;
+    }
+
+    .hero-scroll-bar {
+        height: 52px;
+    }
+   }
+
+   /* =====================
+   Hero — PC（1024px 以上）
+   ===================== */
+@media (min-width: 1024px) {
+    /* 改行制御 */
+    .br-sp {
+        display: none;
+    }
+    .br-pc {
+        display: inline;
+    }
+    .hero-label {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+        color: var(--color-text-main);
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        align-items: center;
+        margin-bottom: 24px;
+        text-align: center;
+        color: var(--color-text-main);
+    }
+    .hero-bottom {
+        position: absolute;
+        bottom: 70px; /* 下からの距離 */
+        left: 50%; /* 左右中央 */
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .hero-desc {
+        font-size: 0.95rem;
+        margin-bottom: 50px;
+    }
+
+    .hero-btn {
+        padding: 16px 56px;
+        font-size: 0.95rem;
+    }
+
+    .hero-scroll {
+        left: auto;
+        transform: none;         /* translateX(-50%)を解除 */
+        right: 60px;             /* 右からの余白 */
+        bottom: 30px;            /* 下からの余白 */
+        z-index: 3;
+    }
+
+    .hero-scroll-text {
+        font-size: 0.8rem;
+        letter-spacing: 0.35em;
+    }
+
+    .hero-scroll-bar {
+        width: 2px;
+        height: 72px;
+    }
+
+    .hero-bg img {
+        object-position: center 30%;
+    }
+}
 
 /* =====================
    Concept — モバイル基準
    ===================== */
 .concept {
-    background-color: var(--color-bg-light-gray);
-    padding: 72px 24px;
-}
-
-.concept-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 48px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-/* セクションラベル（共通） */
-.section-label {
-    display: inline-block;
-    font-family: var(--font-en);
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 16px;
     position: relative;
-    padding-left: 36px;
+    width: 100%;
+    min-height: 72svh;
+    overflow: hidden;
 }
 
-.section-label::before {
-    content: "";
+/* 背景画像 */
+.concept-bg {
     position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 1px;
-    background-color: var(--color-accent);
+    inset: 0;
+    margin: 0;
 }
 
-/* テキストエリア */
-.concept-text {
-    order: 2; /* モバイル：テキストを下に */
+.concept-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* オーバーレイ：テキスト可読性を確保 */
+.concept-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.28) 0%,
+        rgba(0, 0, 0, 0.5) 55%,
+        rgba(0, 0, 0, 0.65) 100%
+    );
+}
+
+.concept-content {
+    position: relative;
+    z-index: 2;
+    width: min(92%, 640px);
+    margin: 0 auto;
+    padding: 50px 12px 84px;
+    color: var(--color-bg-white);
     text-align: center;
 }
 
-.concept-heading {
+.concept-title {
     font-family: var(--font-ja);
     font-size: 1.7rem;
     font-weight: 700;
-    line-height: 1.7;
+    line-height: 1.45;
     letter-spacing: 0.08em;
-    color: var(--color-primary);
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
-.concept-lead {
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    color: var(--color-text-sub);
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.concept-body {
-    font-size: 0.85rem;
-    font-weight: 300;
+.concept-text {
+    font-family: var(--font-ja);
+    font-size: 0.92rem;
+    font-weight: 400;
     line-height: 2.1;
-    letter-spacing: 0.06em;
-    color: var(--color-text-main);
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.32);
 }
-
-/* ロゴ画像エリア */
-.concept-logo {
-    order: 1; /* モバイル：ロゴを上に */
-    flex-shrink: 0;
-    width: 200px;
-}
-
-.concept-logo img {
+/* テキストの空白調整 */
+.concept-text .line-break {
+    display: block;
     width: 100%;
-    height: auto;
-    /* ロゴの白背景をなじませる */
-    mix-blend-mode: multiply;
+}
+.concept-text .gap-sm {
+    margin-top: 1em;
+}
+.concept-text .gap-md {
+    margin-top: 2em;
+}
+.concept-text .gap-lg {
+    margin-top: 4em;
 }
 
 /* =====================
-   セクション区切り線
+   Concept — タブレット（768px 以上）
    ===================== */
-.menu,
-.introduction,
-.access,
-.contact {
-    border-top: 2px solid var(--color-primary);
+@media (min-width: 768px) {
+    .concept {
+        min-height: 78svh;
+    }
+
+    .concept-overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.22) 0%,
+            rgba(0, 0, 0, 0.42) 48%,
+            rgba(0, 0, 0, 0.62) 100%
+        );
+    }
+
+    .concept-content {
+        width: min(86%, 820px);
+        padding: 88px 32px 96px;
+        margin-top: 100px;
+    }
+
+    .concept-title {
+        font-size: 2.1rem;
+        line-height: 1.4;
+        margin-bottom: 100px;
+    }
+
+    .concept-text {
+        font-size: 1rem;
+        line-height: 2.15;
+    }
+}
+
+/* =====================
+   Concept — PC（1024px 以上）
+   ===================== */
+@media (min-width: 1024px) {
+    .concept {
+        min-height: 84svh;
+    }
+
+    .concept-content {
+        width: min(78%, 980px);
+        padding: 50px 56px 120px;
+    }
+
+    .concept-title {
+        font-size: 2.7rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 64px;
+    }
+
+    .concept-text {
+        max-width: 820px;
+        margin: 0 auto;
+        font-size: 1.06rem;
+        line-height: 2.25;
+        letter-spacing: 0.09em;
+    }
+
+    .concept-text .gap-sm {
+        margin-top: 1.2em;
+    }
+
+    .concept-text .gap-md {
+        margin-top: 2.4em;
+    }
+
+    .concept-text .gap-lg {
+        margin-top: 4.4em;
+    }
 }
 
 /* =====================
    Menu — モバイル基準
    ===================== */
 .menu {
-    background-color: var(--color-bg-white);
-    padding: 72px 24px;
+    padding: 64px 16px 72px;
+    background: linear-gradient(
+        180deg,
+        var(--color-bg-lightblue-low) 0%,
+        var(--color-bg-white) 100%
+    );
+}
+
+.menu > .major-item {
+    display: table;
+    margin: 0 auto 28px;
 }
 
 .menu-inner {
-    max-width: 900px;
+    width: min(100%, 760px);
     margin: 0 auto;
+    padding: 24px 16px 20px;
+    border: 1px solid rgba(0, 49, 105, 0.12);
+    border-radius: 14px;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(2px);
 }
 
-/* ラジオボタン非表示 */
-.menu input[type="radio"] {
+/* タブ切替用ラジオは非表示 */
+.menu-inner input[name="menu-tab"] {
     display: none;
 }
 
-/* セクションヘッダー */
 .section-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 18px;
+}
+
+.section-label {
+    font-family: var(--font-en);
+    font-size: 0.72rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--color-text-sub);
+    margin-bottom: 6px;
 }
 
 .menu-heading {
     font-family: var(--font-ja);
-    font-size: 1.8rem;
+    font-size: 1.45rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
     color: var(--color-primary);
+    letter-spacing: 0.12em;
+    line-height: 1.4;
 }
 
-/* タブボタンエリア */
 .menu-tabs {
-    display: flex;
-    margin-bottom: 32px;
-    border-bottom: 1px solid var(--color-border);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
 }
 
 .menu-tabs label {
-    padding: 12px 20px;
-    font-size: 0.9rem;
+    display: block;
+    padding: 10px 6px;
+    border: 1px solid rgba(0, 49, 105, 0.2);
+    border-radius: 999px;
+    font-size: 0.78rem;
     font-weight: 500;
     letter-spacing: 0.08em;
-    color: var(--color-text-sub);
+    text-align: center;
+    color: var(--color-primary);
+    background-color: var(--color-bg-white);
     cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
     transition:
+        background-color var(--transition),
         color var(--transition),
         border-color var(--transition);
 }
 
-.menu-tabs label:hover {
-    color: var(--color-primary);
+.menu-panels {
+    background-color: var(--color-bg-white);
+    border: 1px solid rgba(0, 49, 105, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
 }
 
-/* アクティブタブ（ラジオボタンハック） */
+.menu-panel {
+    display: none;
+    padding: 4px 14px;
+}
+
 #tab-drink:checked ~ .menu-tabs label[for="tab-drink"],
 #tab-food:checked ~ .menu-tabs label[for="tab-food"],
 #tab-sweets:checked ~ .menu-tabs label[for="tab-sweets"] {
-    color: var(--color-primary);
-    border-bottom: 2px solid var(--color-primary);
+    color: var(--color-bg-white);
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
 }
 
-/* パネル：デフォルト非表示 */
-.menu-panel {
-    display: none;
-}
-
-/* チェック時にパネルを表示 */
-#tab-drink:checked ~ .menu-panels .panel-drink {
-    display: block;
-}
-
-#tab-food:checked ~ .menu-panels .panel-food {
-    display: block;
-}
-
+#tab-drink:checked ~ .menu-panels .panel-drink,
+#tab-food:checked ~ .menu-panels .panel-food,
 #tab-sweets:checked ~ .menu-panels .panel-sweets {
     display: block;
 }
 
-/* メニューアイテム */
 .menu-item {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px dashed var(--color-border);
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0, 49, 105, 0.1);
+}
+
+.menu-item:last-child {
+    border-bottom: none;
 }
 
 .menu-item-info {
     flex: 1;
+    min-width: 0;
 }
 
 .menu-item-name {
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
     color: var(--color-text-main);
     margin-bottom: 4px;
 }
 
 .menu-item-desc {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    letter-spacing: 0.03em;
     color: var(--color-text-sub);
-    line-height: 1.6;
 }
 
 .menu-item-price {
+    flex-shrink: 0;
     font-family: var(--font-en);
     font-size: 0.95rem;
     font-weight: 700;
+    letter-spacing: 0.04em;
     color: var(--color-primary);
-    flex-shrink: 0;
-    white-space: nowrap;
+    padding-top: 1px;
+}
+
+/* =====================
+   Menu — タブレット（768px 以上）
+   ===================== */
+@media (min-width: 768px) {
+    .menu {
+        padding: 84px 32px 92px;
+    }
+
+    .menu > .major-item {
+        margin-bottom: 34px;
+    }
+
+    .menu-inner {
+        padding: 30px 26px 24px;
+        border-radius: 16px;
+    }
+
+    .menu .section-header {
+        margin-bottom: 22px;
+    }
+
+    .menu .section-label {
+        font-size: 0.78rem;
+        letter-spacing: 0.36em;
+    }
+
+    .menu .menu-heading {
+        font-size: 1.7rem;
+    }
+
+    .menu-tabs {
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .menu-tabs label {
+        padding: 11px 8px;
+        font-size: 0.86rem;
+    }
+
+    .menu-panel {
+        padding: 8px 18px;
+    }
+
+    .menu-item {
+        gap: 18px;
+        padding: 16px 0;
+    }
+
+    .menu-item-name {
+        font-size: 1.02rem;
+    }
+
+    .menu-item-desc {
+        font-size: 0.84rem;
+    }
+
+    .menu-item-price {
+        font-size: 1.02rem;
+    }
+}
+
+/* =====================
+   Menu — PC（1024px 以上）
+   ===================== */
+@media (min-width: 1024px) {
+    .menu {
+        padding: 104px 48px 112px;
+    }
+
+    .menu > .major-item {
+        margin-bottom: 42px;
+    }
+
+    .menu-inner {
+        width: min(100%, 980px);
+        padding: 40px 40px 32px;
+        border-radius: 18px;
+    }
+
+    .menu .section-header {
+        margin-bottom: 26px;
+    }
+
+    .menu .section-label {
+        font-size: 0.82rem;
+    }
+
+    .menu .menu-heading {
+        font-size: 2rem;
+        letter-spacing: 0.14em;
+    }
+
+    .menu-tabs {
+        width: min(100%, 540px);
+        margin: 0 auto 26px;
+        gap: 14px;
+    }
+
+    .menu-tabs label {
+        font-size: 0.9rem;
+        padding: 12px 10px;
+    }
+
+    .menu-panel {
+        padding: 10px 26px;
+    }
+
+    .menu-item {
+        gap: 24px;
+        padding: 18px 0;
+    }
+
+    .menu-item-name {
+        font-size: 1.08rem;
+    }
+
+    .menu-item-desc {
+        font-size: 0.88rem;
+        line-height: 1.75;
+    }
+
+    .menu-item-price {
+        font-size: 1.08rem;
+    }
 }
 
 /* =====================
    Introduction — モバイル基準
    ===================== */
 .introduction {
-    background-color: var(--color-bg-light-gray);
-    padding: 72px 24px;
+    padding: 64px 16px 74px;
+    background-color: var(--color-bg-white);
 }
 
 .introduction-inner {
-    max-width: 1100px;
+    width: min(100%, 760px);
     margin: 0 auto;
 }
 
-.introduction-heading {
-    font-family: var(--font-ja);
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--color-primary);
+.introduction .major-item {
+    display: table;
+    margin: 0 auto 22px;
 }
 
 .introduction-lead {
-    font-size: 0.9rem;
-    letter-spacing: 0.12em;
-    color: var(--color-text-sub);
-    margin-bottom: 48px;
+    font-family: var(--font-ja);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.08em;
     text-align: center;
+    color: var(--color-text-main);
+    margin-bottom: 26px;
 }
 
 .feature-list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 14px;
 }
 
 .feature-item {
-    background-color: var(--color-bg-white);
-    padding: 32px 24px;
-    border-top: 3px solid var(--color-primary);
+    padding: 18px 14px 16px;
+    border: 1px solid rgba(0, 49, 105, 0.12);
+    border-radius: 12px;
+    background: linear-gradient(
+        180deg,
+        var(--color-bg-white) 0%,
+        var(--color-bg-lightblue-low) 100%
+    );
 }
 
 .feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
     font-family: var(--font-en);
-    font-size: 2.4rem;
+    font-size: 0.76rem;
     font-weight: 700;
-    color: var(--color-primary);
-    opacity: 0.12;
-    line-height: 1;
-    margin-bottom: 12px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
+    color: var(--color-bg-white);
+    background-color: var(--color-primary);
+    margin-bottom: 10px;
 }
 
 .feature-title {
+    font-family: var(--font-ja);
     font-size: 1rem;
     font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
     color: var(--color-primary);
-    margin-bottom: 12px;
-    letter-spacing: 0.05em;
+    margin-bottom: 8px;
 }
 
 .feature-desc {
-    font-size: 0.82rem;
-    line-height: 1.9;
-    color: var(--color-text-main);
+    font-family: var(--font-ja);
+    font-size: 0.86rem;
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+    color: var(--color-text-sub);
+}
+
+/* =====================
+   Introduction — タブレット（768px 以上）
+   ===================== */
+@media (min-width: 768px) {
+    .introduction {
+        padding: 84px 32px 92px;
+    }
+
+    .introduction-inner {
+        width: min(100%, 980px);
+    }
+
+    .introduction .major-item {
+        margin-bottom: 28px;
+    }
+
+    .introduction-lead {
+        font-size: 1.08rem;
+        line-height: 2;
+        margin-bottom: 34px;
+    }
+
+    .feature-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .feature-item {
+        padding: 22px 18px 20px;
+        border-radius: 14px;
+    }
+
+    .feature-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+
+    .feature-title {
+        font-size: 1.06rem;
+        margin-bottom: 9px;
+    }
+
+    .feature-desc {
+        font-size: 0.9rem;
+        line-height: 1.85;
+    }
+}
+
+/* =====================
+   Introduction — PC（1024px 以上）
+   ===================== */
+@media (min-width: 1024px) {
+    .introduction {
+        padding: 104px 48px 114px;
+    }
+
+    .introduction .major-item {
+        margin-bottom: 32px;
+    }
+
+    .introduction-lead {
+        max-width: 760px;
+        margin: 0 auto 42px;
+        font-size: 1.16rem;
+        line-height: 2.05;
+    }
+
+    .feature-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .feature-item {
+        padding: 24px 20px 22px;
+        border-radius: 16px;
+    }
+
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 0.84rem;
+        margin-bottom: 12px;
+    }
+
+    .feature-title {
+        font-size: 1.12rem;
+        margin-bottom: 10px;
+    }
+
+    .feature-desc {
+        font-size: 0.94rem;
+        line-height: 1.9;
+    }
 }
 
 /* =====================
    Access — モバイル基準
    ===================== */
 .access {
-    background-color: var(--color-bg-white);
-    padding: 72px 24px;
+    padding: 64px 16px 74px;
+    background: linear-gradient(
+        180deg,
+        var(--color-bg-lightblue-low) 0%,
+        var(--color-bg-white) 100%
+    );
 }
 
 .access-inner {
-    max-width: 1100px;
+    width: min(100%, 980px);
     margin: 0 auto;
 }
 
-.access-heading {
-    font-family: var(--font-ja);
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--color-primary);
+.access .major-item {
+    display: table;
+    margin: 0 auto 24px;
 }
 
 .access-content {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
 .access-map {
-    width: 100%;
+    overflow: hidden;
+    border-radius: 14px;
+    min-height: 240px;
+    background-color: var(--color-bg-white);
+    border: 1px solid rgba(0, 49, 105, 0.12);
 }
 
 .map-placeholder {
-    width: 100%;
-    height: 260px;
-    background-color: var(--color-bg-light-gray);
-    border: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    min-height: 240px;
+    padding: 24px;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 49, 105, 0.9),
+        rgba(0, 162, 233, 0.72)
+    );
+    color: var(--color-bg-white);
+    text-align: center;
 }
 
 .map-placeholder p {
     font-family: var(--font-en);
-    font-size: 1.8rem;
-    font-weight: 200;
-    letter-spacing: 0.3em;
-    color: var(--color-border);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
 }
 
 .map-placeholder span {
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    color: var(--color-text-sub);
+    font-family: var(--font-en);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    opacity: 0.9;
+    text-transform: uppercase;
+}
+
+.access-info {
+    padding: 18px 16px;
+    border: 1px solid rgba(0, 49, 105, 0.12);
+    border-radius: 14px;
+    background-color: rgba(255, 255, 255, 0.94);
 }
 
 .access-detail {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 32px;
+    display: grid;
+    gap: 14px;
 }
 
 .access-row {
-    display: flex;
-    gap: 20px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--color-border);
+    display: grid;
+    gap: 4px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(0, 49, 105, 0.1);
 }
 
-.access-row:first-child {
-    border-top: 1px solid var(--color-border);
+.access-row:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 .access-row dt {
-    flex-shrink: 0;
-    width: 72px;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     font-weight: 700;
+    letter-spacing: 0.12em;
     color: var(--color-primary);
-    letter-spacing: 0.06em;
-    padding-top: 2px;
 }
 
-.access-row dd {
-    font-size: 0.85rem;
+.access-row dd,
+.access-row dd a {
+    font-size: 0.9rem;
     line-height: 1.8;
     color: var(--color-text-main);
-}
-
-.access-row dd a {
-    color: var(--color-accent);
 }
 
 .access-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 28px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 22px;
+    padding: 13px 18px;
+    border: 1px solid var(--color-primary);
+    border-radius: 999px;
     background-color: var(--color-primary);
     color: var(--color-bg-white);
     font-size: 0.82rem;
+    font-weight: 500;
     letter-spacing: 0.12em;
-    transition: background-color var(--transition);
-}
-
-.access-btn::after {
-    content: "→";
+    transition:
+        background-color var(--transition),
+        color var(--transition),
+        border-color var(--transition);
 }
 
 .access-btn:hover {
-    background-color: var(--color-accent);
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+/* =====================
+   Access — タブレット（768px 以上）
+   ===================== */
+@media (min-width: 768px) {
+    .access {
+        padding: 84px 32px 94px;
+    }
+
+    .access .major-item {
+        margin-bottom: 30px;
+    }
+
+    .access-content {
+        gap: 24px;
+    }
+
+    .access-map,
+    .map-placeholder {
+        min-height: 320px;
+    }
+
+    .access-info {
+        padding: 24px 22px;
+    }
+
+    .access-detail {
+        gap: 16px;
+    }
+
+    .access-row {
+        grid-template-columns: 110px 1fr;
+        gap: 10px 18px;
+        align-items: start;
+        padding-bottom: 16px;
+    }
+
+    .access-row dt {
+        font-size: 0.8rem;
+        padding-top: 2px;
+    }
+
+    .access-row dd,
+    .access-row dd a {
+        font-size: 0.95rem;
+    }
+
+    .access-btn {
+        width: auto;
+        min-width: 240px;
+        margin-top: 26px;
+        padding: 14px 24px;
+        font-size: 0.86rem;
+    }
+}
+
+/* =====================
+   Access — PC（1024px 以上）
+   ===================== */
+@media (min-width: 1024px) {
+    .access {
+        padding: 104px 48px 116px;
+    }
+
+    .access .major-item {
+        margin-bottom: 34px;
+    }
+
+    .access-content {
+        grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+        gap: 28px;
+        align-items: stretch;
+    }
+
+    .access-map,
+    .map-placeholder {
+        min-height: 100%;
+    }
+
+    .access-map {
+        min-height: 420px;
+    }
+
+    .map-placeholder p {
+        font-size: 2.4rem;
+        margin-bottom: 10px;
+    }
+
+    .map-placeholder span {
+        font-size: 0.84rem;
+    }
+
+    .access-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 28px 26px;
+    }
+
+    .access-row {
+        grid-template-columns: 120px 1fr;
+        gap: 10px 20px;
+    }
+
+    .access-row dt {
+        font-size: 0.82rem;
+    }
+
+    .access-row dd,
+    .access-row dd a {
+        font-size: 0.98rem;
+        line-height: 1.9;
+    }
+
+    .access-btn {
+        align-self: flex-start;
+        min-width: 260px;
+        font-size: 0.9rem;
+    }
 }
 
 /* =====================
    Contact — モバイル基準
    ===================== */
 .contact {
-    background-color: var(--color-primary);
-    padding: 72px 24px;
+    padding: 64px 16px 76px;
+    background-color: var(--color-bg-white);
 }
 
 .contact-inner {
-    max-width: 760px;
+    width: min(100%, 860px);
     margin: 0 auto;
 }
 
-.section-label--light {
-    color: var(--color-accent);
-}
-
-.section-label--light::before {
-    background-color: var(--color-accent);
-}
-
-.contact-heading {
-    font-family: var(--font-ja);
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--color-bg-white);
+.contact .major-item {
+    display: table;
+    margin: 0 auto 22px;
 }
 
 .contact-lead {
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.65);
-    margin-bottom: 40px;
+    font-size: 0.96rem;
+    line-height: 1.9;
+    letter-spacing: 0.05em;
     text-align: center;
+    color: var(--color-text-sub);
+    margin-bottom: 28px;
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    display: grid;
+    gap: 16px;
+    padding: 22px 16px;
+    border: 1px solid rgba(0, 49, 105, 0.12);
+    border-radius: 16px;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(232, 246, 251, 0.72) 100%
+    );
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 8px;
 }
 
 .form-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--color-primary);
 }
 
 .form-required {
-    font-size: 0.65rem;
-    font-weight: 400;
-    letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background-color: rgba(0, 162, 233, 0.14);
     color: var(--color-accent);
-    background-color: rgba(0, 162, 233, 0.15);
-    padding: 2px 6px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    vertical-align: middle;
 }
 
 .form-input,
 .form-textarea {
     width: 100%;
-    padding: 14px 16px;
-    background-color: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--color-bg-white);
+    border: 1px solid rgba(0, 49, 105, 0.16);
+    border-radius: 12px;
+    background-color: var(--color-bg-white);
+    color: var(--color-text-main);
     font-family: var(--font-ja);
-    font-size: 0.9rem;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    border-radius: 0;
+    font-size: 0.94rem;
+    line-height: 1.7;
+    padding: 13px 14px;
     transition:
         border-color var(--transition),
-        background-color var(--transition);
+        box-shadow var(--transition);
+}
+
+.form-textarea {
+    min-height: 160px;
+    resize: vertical;
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(51, 51, 51, 0.45);
 }
 
 .form-input:focus,
 .form-textarea:focus {
-    border-color: var(--color-accent);
-    background-color: rgba(255, 255, 255, 0.12);
-}
-
-.form-textarea {
-    resize: vertical;
-    min-height: 160px;
+    outline: none;
+    border-color: rgba(0, 162, 233, 0.75);
+    box-shadow: 0 0 0 4px rgba(0, 162, 233, 0.12);
 }
 
 .form-submit {
-    text-align: center;
-    margin-top: 8px;
+    padding-top: 6px;
 }
 
 .submit-btn {
-    display: inline-block;
-    padding: 16px 60px;
-    background-color: var(--color-bg-white);
-    color: var(--color-primary);
-    font-family: var(--font-ja);
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid var(--color-primary);
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     cursor: pointer;
     transition:
         background-color var(--transition),
-        color var(--transition);
+        color var(--transition),
+        transform var(--transition);
 }
 
 .submit-btn:hover {
-    background-color: var(--color-accent);
-    color: var(--color-bg-white);
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* =====================
+   Contact — タブレット（768px 以上）
+   ===================== */
+@media (min-width: 768px) {
+    .contact {
+        padding: 84px 32px 94px;
+    }
+
+    .contact .major-item {
+        margin-bottom: 26px;
+    }
+
+    .contact-lead {
+        font-size: 1.02rem;
+        margin-bottom: 34px;
+    }
+
+    .contact-form {
+        gap: 18px;
+        padding: 30px 24px;
+    }
+
+    .form-label {
+        font-size: 0.92rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 0.98rem;
+        padding: 14px 16px;
+    }
+
+    .form-textarea {
+        min-height: 190px;
+    }
+
+    .submit-btn {
+        width: auto;
+        min-width: 220px;
+        padding: 14px 28px;
+        font-size: 0.9rem;
+    }
+}
+
+/* =====================
+   Contact — PC（1024px 以上）
+   ===================== */
+@media (min-width: 1024px) {
+    .contact {
+        padding: 104px 48px 118px;
+    }
+
+    .contact .major-item {
+        margin-bottom: 30px;
+    }
+
+    .contact-lead {
+        max-width: 720px;
+        margin: 0 auto 40px;
+        font-size: 1.08rem;
+        line-height: 2;
+    }
+
+    .contact-form {
+        gap: 22px;
+        padding: 38px 34px;
+        border-radius: 18px;
+    }
+
+    .form-group {
+        gap: 10px;
+    }
+
+    .form-label {
+        font-size: 0.95rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 1rem;
+        padding: 15px 18px;
+    }
+
+    .form-textarea {
+        min-height: 220px;
+    }
+
+    .submit-btn {
+        min-width: 240px;
+        font-size: 0.94rem;
+    }
 }
 
 /* =====================
@@ -1048,250 +1833,87 @@ main {
 }
 
 /* =====================
-   Responsive — Tablet（min-width: 769px）
+   Footer：タブレット（768px 以上）
    ===================== */
-@media (min-width: 769px) {
-    /* Concept */
-    .concept {
-        padding: 100px 40px;
-    }
-
-    .concept-inner {
-        flex-direction: row;
-        align-items: center;
-        gap: 64px;
-    }
-
-    .concept-text {
-        order: 1; /* タブレット以上：テキストを左に */
-        text-align: left;
-        flex: 1;
-    }
-
-    .concept-logo {
-        order: 2; /* タブレット以上：ロゴを右に */
-        width: 260px;
-    }
-
-    .concept-heading {
-        font-size: 2rem;
-    }
-
-    /* Hero */
-    .hero-content {
-        bottom: 100px;
-        left: 0;
-        right: auto;
-        padding: 0 56px;
-        text-align: left;
-        max-width: 600px;
-    }
-
-    .hero-title {
-        font-size: 2.6rem;
-    }
-
-    .hero-desc {
-        font-size: 0.85rem;
-    }
-
-    .hero-scroll {
-        left: auto;
-        right: 40px;
-        transform: none;
-        bottom: 40px;
-    }
-
-    :root {
-        --header-height: 80px;
-    }
-
-    /* ロゴサイズアップ */
-    .header-logo {
-        padding: 0 40px 0 32px;
-    }
-
-    .logo-main {
-        font-size: 2rem;
-    }
-
-    .logo-sub {
-        font-size: 0.6rem;
-    }
-
-    /* ナビ：インライン表示に切り替え（チェック状態に関わらず常時表示） */
-    .header-nav,
-    .nav-toggle:checked ~ .header-inner .header-nav {
-        position: static;
-        display: flex;
-        align-items: center;
-        width: auto;
-        margin-left: auto;
-        padding: 0 40px 0 24px;
-        background-color: transparent;
-        border-top: none;
-        transform: none;
-        opacity: 1;
-        pointer-events: auto;
-        transition: none;
-    }
-
-    .nav-list {
-        flex-direction: row;
-        align-items: center;
-        gap: 32px;
-    }
-
-    .nav-list a {
-        font-size: 0.82rem;
-    }
-
-    /* ハンバーガーを非表示 */
-    .hamburger {
-        display: none;
-    }
-
-    /* Menu */
-    .menu {
-        padding: 100px 40px;
-    }
-
-    .menu-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0 40px;
-    }
-
-    /* Introduction */
-    .introduction {
-        padding: 100px 40px;
-    }
-
-    .feature-list {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-    }
-
-    /* Access */
-    .access {
-        padding: 100px 40px;
-    }
-
-    .access-content {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 56px;
-    }
-
-    .access-map {
-        flex: 1.2;
-    }
-
-    .map-placeholder {
-        height: 400px;
-    }
-
-    .access-info {
-        flex: 1;
-    }
-
-    /* Contact */
-    .contact {
-        padding: 100px 40px;
-    }
-
-    /* フッター：2カラムグリッド */
+@media (min-width: 768px) {
     .footer-inner {
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        padding: 56px 40px 44px;
+        gap: 40px 48px;
+        padding: 56px 32px 44px;
     }
 
     .footer-brand {
         grid-column: 1 / -1;
     }
-}
 
-/* =====================
-   Responsive — Desktop（min-width: 1025px）
-   ===================== */
-@media (min-width: 1025px) {
-    /* Concept */
-    .concept {
-        padding: 120px 40px;
+    .footer-logo-text {
+        font-size: 2rem;
     }
 
-    .concept-inner {
-        gap: 100px;
+    .footer-nav-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px 24px;
     }
 
-    .concept-logo {
-        width: 320px;
+    .footer-info {
+        gap: 12px;
     }
 
-    .concept-heading {
-        font-size: 2.4rem;
-    }
-
-    .concept-body {
-        font-size: 0.9rem;
-    }
-
-    /* Hero */
-    .hero-title {
-        font-size: 3.2rem;
-    }
-
-    .hero-content {
-        bottom: 120px;
-        padding: 0 80px;
-        max-width: 700px;
-    }
-
-    /* Menu */
-    .menu {
-        padding: 120px 40px;
-    }
-
-    /* Introduction */
-    .introduction {
-        padding: 120px 40px;
-    }
-
-    .introduction-heading {
-        font-size: 2.4rem;
-    }
-
-    /* Access */
-    .access {
-        padding: 120px 40px;
-    }
-
-    .map-placeholder {
-        height: 460px;
-    }
-
-    /* Contact */
-    .contact {
-        padding: 120px 40px;
-    }
-
-    .contact-heading {
-        font-size: 2.4rem;
-    }
-
-    /* フッター：3カラムグリッド */
-    .footer-inner {
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 48px;
-        padding: 64px 40px 48px;
-    }
-
-    .footer-brand {
-        grid-column: auto;
+    .footer-info p {
+        font-size: 0.85rem;
     }
 
     .footer-copyright {
-        padding: 20px 40px;
+        padding: 20px 32px;
+    }
+}
+
+/* =====================
+   Footer：PC（1024px 以上）
+   ===================== */
+@media (min-width: 1024px) {
+    .footer-inner {
+        grid-template-columns: 240px 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 0 64px;
+        padding: 64px 48px 52px;
+        align-items: start;
+    }
+
+    .footer-brand {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    .footer-nav {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    .footer-info {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+    }
+
+    .footer-nav-list {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .footer-logo-text {
+        font-size: 2.2rem;
+    }
+
+    .footer-catch {
+        font-size: 0.82rem;
+    }
+
+    .footer-info p {
+        font-size: 0.88rem;
+    }
+
+    .footer-copyright {
+        padding: 20px 48px;
     }
 }

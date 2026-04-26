@@ -28,21 +28,17 @@
         />
     </head>
     <body>
-        <!-- ========== HEADER ========== -->
         <header class="site-header">
-            <!-- チェックボックス：ハンバーガーメニューの開閉を制御（非表示） -->
-            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-
             <div class="header-inner">
-                <!-- ロゴ（白背景側） -->
+                <!-- チェックボックス：ハンバーガーメニューの開閉を制御（非表示） -->
+                <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
                 <div class="header-logo">
                     <a href="index.html" class="logo-link">
                         <span class="logo-main">樹の海</span>
                         <span class="logo-sub">kinomi</span>
                     </a>
                 </div>
-
-                <!-- ナビゲーション（プライマリーカラー側） -->
                 <nav class="header-nav" aria-label="グローバルナビゲーション">
                     <ul class="nav-list">
                         <li><a href="#concept">コンセプト</a></li>
@@ -52,7 +48,6 @@
                         <li><a href="#contact">お問い合わせ</a></li>
                     </ul>
                 </nav>
-
                 <!-- ハンバーガーボタン（label要素でチェックボックスを操作） -->
                 <label
                     for="nav-toggle"
@@ -64,84 +59,64 @@
                     <span></span>
                 </label>
             </div>
-            <!-- /.header-inner -->
+            <!-- ./ header-inner -->
         </header>
 
         <!-- ========== MAIN ========== -->
         <main>
-            <!-- ========== HERO ========== -->
-            <section class="hero" id="hero">
-                <!-- 背景画像 -->
+            <section class="hero">
+                <!-- ① 背景画像 -->
                 <figure class="hero-bg">
-                    <img
-                        src="img/hero.jpg"
-                        alt="テーブルの上に置かれたコーヒーカップ"
-                        loading="eager"
-                    />
+                    <img src="img/hero.jpg" alt="..." />
                 </figure>
 
-                <!-- オーバーレイ（テキスト可読性向上） -->
+                <!-- ② グラデーションオーバーレイ（テキストを読みやすくする暗幕） -->
                 <div class="hero-overlay"></div>
 
-                <!-- テキストコンテンツ -->
+                <!-- ③ テキスト・ボタン -->
                 <div class="hero-content">
                     <p class="hero-label">Cafe kinomi</p>
                     <h1 class="hero-title">
-                        <span>海を感じる、</span>
-                        <span>やすらぎの一杯。</span>
+                        海のそばで、<br class="br-sp">ひと息つく。<br class="br-pc">
                     </h1>
+                </div>
+                <div class="hero-bottom">
                     <p class="hero-desc">
-                        福井・越前の海辺にたたずむ、きのみカフェ
+                        自然の恵みをいかしたコーヒーとお食事
                     </p>
-                    <a href="#concept" class="hero-btn">詳しく見る</a>
+                    <a href="#concept" class="hero-btn">コンセプトを見る</a>
                 </div>
 
-                <!-- スクロールインジケーター -->
+                <!-- ④ スクロールインジケーター（scroll + アニメーションバー） -->
                 <div class="hero-scroll">
-                    <span class="hero-scroll-text">Scroll</span>
-                    <div class="hero-scroll-bar"></div>
+                    <span class="hero-scroll-text">scroll</span>
+                    <span class="hero-scroll-bar"></span>
                 </div>
             </section>
-            <!-- /.hero -->
 
-            <!-- ========== CONCEPT ========== -->
-            <section class="concept" id="concept">
-                <div class="concept-inner">
-                    <!-- テキストエリア -->
-                    <div class="concept-text">
-                        <p class="section-label">Concept</p>
-                        <h2 class="concept-heading">
-                            木の実が育つように、<br />
-                            ゆっくりと。
-                        </h2>
-                        <p class="concept-lead">
-                            越前の海と緑に囲まれた、静かな時間。
-                        </p>
-                        <p class="concept-body">
-                            福井県越前町の海辺にたたずむ「きのみカフェ」は、<br />
-                            地元の恵みを活かしたコーヒーとお食事をご提供します。<br />
-                            波の音に耳を澄ませながら、木の実が静かに熟すように、<br />
-                            ここでしか味わえないゆったりとした時間をお過ごしください。
-                        </p>
-                    </div>
-                    <!-- /.concept-text -->
-
-                    <!-- ロゴ画像エリア -->
-                    <div class="concept-logo">
-                        <img
-                            src="img/logo.png"
-                            alt="Cafe kinomi 樹の海 ロゴ"
-                            loading="lazy"
-                        />
-                    </div>
-                    <!-- /.concept-logo -->
+            <section class="concept">
+                <!-- 背景画像 -->
+                 <figure class="concept-bg">
+                    <img src="img/concept.jpg" alt="海の画像" />
+                </figure>
+                <!-- グラデーションオーバーレイ（テキストを読みやすくする暗幕） -->
+                <div class="concept-overlay"></div>
+                <div class="concept-content">
+                    <div class="major-item">CONCEPT</div>
+                    <h1 class="concept-title">海と木に、心をほどく。</h1>
+                    <p class="concept-text">
+                        樹の海は、越前の海風と木のぬくもりを感じられる小さなカフェです。<span class="line-break gap-md"></span>
+                        一杯ずつ丁寧に淹れるコーヒーと、季節の素材を活かしたやさしい食事で、
+                        忙しい日常の中にほっと深呼吸できる時間をご用意しています。<span class="line-break gap-md"></span>
+                        窓の向こうに広がる景色を眺めながら、
+                        誰かと語らうひとときも、ひとりで静かに過ごす時間も、
+                        それぞれのペースでお楽しみください。
+                    </p>
                 </div>
-                <!-- /.concept-inner -->
             </section>
-            <!-- /.concept -->
 
-            <!-- ========== MENU ========== -->
-            <section class="menu" id="menu">
+            <section class="menu">
+                <div class="major-item">MENU</div>
                 <div class="menu-inner">
                     <!-- ラジオボタン（非表示）タブ切り替えハック -->
                     <input
@@ -155,7 +130,6 @@
 
                     <!-- セクションヘッダー -->
                     <div class="section-header">
-                        <p class="section-label">Menu</p>
                         <h2 class="menu-heading">メニュー</h2>
                     </div>
 
@@ -345,15 +319,11 @@
                 </div>
                 <!-- /.menu-inner -->
             </section>
-            <!-- /.menu -->
 
             <!-- ========== INTRODUCTION ========== -->
-            <section class="introduction" id="introduction">
+            <section class="introduction">
                 <div class="introduction-inner">
-                    <div class="section-header">
-                        <p class="section-label">About</p>
-                        <h2 class="introduction-heading">店舗紹介</h2>
-                    </div>
+                    <div class="major-item">店舗紹介</div>
                     <p class="introduction-lead">
                         海と森が交わる、越前のちいさなカフェ。
                     </p>
@@ -385,12 +355,9 @@
             <!-- /.introduction -->
 
             <!-- ========== ACCESS ========== -->
-            <section class="access" id="access">
+            <section class="access">
                 <div class="access-inner">
-                    <div class="section-header">
-                        <p class="section-label">Access</p>
-                        <h2 class="access-heading">アクセス</h2>
-                    </div>
+                    <div class="major-item">アクセス</div>
                     <div class="access-content">
                         <!-- マッププレースホルダー -->
                         <div class="access-map">
@@ -443,14 +410,9 @@
             <!-- /.access -->
 
             <!-- ========== CONTACT ========== -->
-            <section class="contact" id="contact">
+            <section class="contact">
                 <div class="contact-inner">
-                    <div class="section-header">
-                        <p class="section-label section-label--light">
-                            Contact
-                        </p>
-                        <h2 class="contact-heading">お問い合わせ</h2>
-                    </div>
+                    <div class="major-item">お問合せ</div>
                     <p class="contact-lead">
                         ご予約・お問い合わせは下記フォームよりお気軽にどうぞ。
                     </p>
@@ -517,6 +479,7 @@
                 </div>
             </section>
             <!-- /.contact -->
+
         </main>
 
         <!-- ========== FOOTER ========== -->
@@ -524,7 +487,7 @@
             <div class="footer-inner">
                 <!-- フッターロゴ・キャッチ -->
                 <div class="footer-brand">
-                    <p class="footer-logo-text">kinomi</p>
+                    <p class="footer-logo-text">樹の海</p>
                     <p class="footer-catch">海辺のちいさなカフェ</p>
                 </div>
 
@@ -550,7 +513,7 @@
 
             <!-- コピーライト -->
             <div class="footer-copyright">
-                <p>&copy; 2025 kinomi cafe. All Rights Reserved.</p>
+                <p>&copy; 2026 kinomi cafe. All Rights Reserved.</p>
             </div>
         </footer>
     </body>
