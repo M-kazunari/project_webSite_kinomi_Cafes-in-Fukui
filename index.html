@@ -1,109 +1,112 @@
 <!doctype html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="description"
-            content="カフェ きのみ - 自然の恵みをいかしたこだわりのコーヒーとお食事をご提供する海のカフェです。"
-        />
-        <meta
-            name="keywords"
-            content="カフェ, コーヒー, スイーツ, お食事, kinomi, きのみ, 福井県, 越前町, 海のカフェ"
-        />
-        <meta name="author" content="kinomi cafe" />
-        <title>Cafe kinomi | きのみカフェ</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <!--和文フォント-->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
-            rel="stylesheet"
-        />
-        <!--欧文フォント-->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <header class="site-header">
-            <div class="header-inner">
-                <!-- チェックボックス：ハンバーガーメニューの開閉を制御（非表示） -->
-                <input type="checkbox" id="nav-toggle" class="nav-toggle" />
 
-                <div class="header-logo">
-                    <a href="index.html" class="logo-link">
-                        <span class="logo-main">樹の海</span>
-                        <span class="logo-sub">kinomi</span>
-                    </a>
-                </div>
-                <nav class="header-nav" aria-label="グローバルナビゲーション">
-                    <ul class="nav-list">
-                        <li><a href="#concept">コンセプト</a></li>
-                        <li><a href="#menu">メニュー</a></li>
-                        <li><a href="#introduction">店舗紹介</a></li>
-                        <li><a href="#access">アクセス</a></li>
-                        <li><a href="#contact">お問い合わせ</a></li>
-                    </ul>
-                </nav>
-                <!-- ハンバーガーボタン（label要素でチェックボックスを操作） -->
-                <label
-                    for="nav-toggle"
-                    class="hamburger"
-                    aria-label="メニューを開閉する"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="カフェ きのみ - 自然の恵みをいかしたこだわりのコーヒーとお食事をご提供する海のカフェです。" />
+    <meta name="keywords" content="カフェ, コーヒー, スイーツ, お食事, kinomi, きのみ, 福井県, 越前町, 海のカフェ" />
+    <meta name="author" content="kinomi cafe" />
+    <title>Cafe kinomi | きのみカフェ</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--和文フォント-->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet" />
+    <!--欧文フォント-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet" />
+    <!-- Climate Crisis -->
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <!-- チェックボックス：ハンバーガーメニューの開閉を制御（非表示） -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+            <div class="sns-logo">
+                <a href="#" aria-label="Instagram" class="icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                        <path
+                            d="M224.3 141a115 115 0 1 0 -.6 230 115 115 0 1 0 .6-230zm-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1 -.6-149.2zm93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1 -53.6 0zm129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="X" class="icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                        <path
+                            d="M357.2 48L427.8 48 273.6 224.2 455 464 313 464 201.7 318.6 74.5 464 3.8 464 168.7 275.5-5.2 48 140.4 48 240.9 180.9 357.2 48zM332.4 421.8l39.1 0-252.4-333.8-42 0 255.3 333.8z" />
+                    </svg>
+                </a>
             </div>
-            <!-- ./ header-inner -->
-        </header>
 
-        <!-- ========== MAIN ========== -->
-        <main>
-            <section class="hero">
-                <!-- ① 背景画像 -->
-                <figure class="hero-bg">
-                    <img src="img/hero.jpg" alt="..." />
+            <div class="header-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-main">樹の海</span>
+                    <span class="logo-sub">kinomi</span>
+                </a>
+            </div>
+            <nav class="header-nav" aria-label="グローバルナビゲーション">
+                <ul class="nav-list">
+                    <li><a href="#concept">コンセプト</a></li>
+                    <li><a href="#menu">メニュー</a></li>
+                    <li><a href="#access">アクセス</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <!-- ハンバーガーボタン（label要素でチェックボックスを操作） -->
+            <label for="nav-toggle" class="hamburger" aria-label="メニューを開閉する">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+        <!-- ./ header-inner -->
+    </header>
+
+    <main>
+        <section class="hero">
+            <!-- ① 背景画像 -->
+            <figure class="hero-bg">
+                <img src="img/hero.jpg" alt="..." />
+            </figure>
+
+            <!-- ② グラデーションオーバーレイ（テキストを読みやすくする暗幕） -->
+            <div class="hero-overlay"></div>
+
+            <!-- ③ テキスト・ボタン -->
+            <div class="hero-content">
+                <p class="hero-label">Cafe kinomi</p>
+                <h1 class="hero-title">
+                    海のそばで、<br class="br-sp">ひと息つく。<br class="br-pc">
+                </h1>
+            </div>
+            <div class="hero-bottom">
+                <p class="hero-desc">
+                    自然の恵みをいかしたコーヒーとお食事
+                </p>
+                <a href="#concept" class="hero-btn">コンセプトを見る</a>
+            </div>
+
+            <!-- ④ スクロールインジケーター（scroll + アニメーションバー） -->
+            <div class="hero-scroll">
+                <span class="hero-scroll-text">scroll</span>
+                <span class="hero-scroll-bar"></span>
+            </div>
+        </section>
+
+        <section class="concept" id="concept">
+            <div class="major-item">CONCEPT</div>
+            <div class="concept-layout">
+                <figure class="concept-logo">
+                    <img src="img/logo2.png" alt="ロゴ：樹の海">
                 </figure>
-
-                <!-- ② グラデーションオーバーレイ（テキストを読みやすくする暗幕） -->
-                <div class="hero-overlay"></div>
-
-                <!-- ③ テキスト・ボタン -->
-                <div class="hero-content">
-                    <p class="hero-label">Cafe kinomi</p>
-                    <h1 class="hero-title">
-                        海のそばで、<br class="br-sp">ひと息つく。<br class="br-pc">
-                    </h1>
-                </div>
-                <div class="hero-bottom">
-                    <p class="hero-desc">
-                        自然の恵みをいかしたコーヒーとお食事
-                    </p>
-                    <a href="#concept" class="hero-btn">コンセプトを見る</a>
-                </div>
-
-                <!-- ④ スクロールインジケーター（scroll + アニメーションバー） -->
-                <div class="hero-scroll">
-                    <span class="hero-scroll-text">scroll</span>
-                    <span class="hero-scroll-bar"></span>
-                </div>
-            </section>
-
-            <section class="concept">
-                <!-- 背景画像 -->
-                 <figure class="concept-bg">
-                    <img src="img/concept.jpg" alt="海の画像" />
-                </figure>
-                <!-- グラデーションオーバーレイ（テキストを読みやすくする暗幕） -->
-                <div class="concept-overlay"></div>
-                <div class="concept-content">
-                    <div class="major-item">CONCEPT</div>
-                    <h1 class="concept-title">海と木に、心をほどく。</h1>
+                <h1 class="concept-title">海と木に、<br class="br-pc">心をほどく。</h1>
+                <div class="concept-copy">
                     <p class="concept-text">
                         樹の海は、越前の海風と木のぬくもりを感じられる小さなカフェです。<span class="line-break gap-md"></span>
                         一杯ずつ丁寧に淹れるコーヒーと、季節の素材を活かしたやさしい食事で、
@@ -112,51 +115,35 @@
                         誰かと語らうひとときも、ひとりで静かに過ごす時間も、
                         それぞれのペースでお楽しみください。
                     </p>
+                    <a href="#" class="btn">VIEW MORE</a>
                 </div>
-            </section>
+            </div>
+        </section>
+        <!-- /. concept -->
 
-            <section class="menu">
-                <div class="major-item">MENU</div>
-                <div class="menu-inner">
-                    <!-- ラジオボタン（非表示）タブ切り替えハック -->
-                    <input
-                        type="radio"
-                        name="menu-tab"
-                        id="tab-drink"
-                        checked
-                    />
-                    <input type="radio" name="menu-tab" id="tab-food" />
-                    <input type="radio" name="menu-tab" id="tab-sweets" />
-
-                    <!-- セクションヘッダー -->
-                    <div class="section-header">
-                        <h2 class="menu-heading">メニュー</h2>
+        <section class="menu" id="menu">
+            <div class="major-item">MENU</div>
+            <div class="menu-panels">
+                <!-- ドリンク -->
+                 <div class="menu-drink">
+                    <div class="menu-title drink">
+                        <h2 class="menu-title-text">ドリンク</h2>
+                        <p class="menu-text">Drink</p>
                     </div>
-
-                    <!-- タブボタン -->
-                    <div class="menu-tabs">
-                        <label for="tab-drink">ドリンク</label>
-                        <label for="tab-food">フード</label>
-                        <label for="tab-sweets">スイーツ</label>
-                    </div>
-
-                    <!-- パネル -->
-                    <div class="menu-panels">
-                        <!-- ドリンク -->
-                        <div class="menu-panel panel-drink">
-                            <ul class="menu-list">
-                                <li class="menu-item">
-                                    <div class="menu-item-info">
-                                        <p class="menu-item-name">
-                                            ブレンドコーヒー
-                                        </p>
-                                        <p class="menu-item-desc">
-                                            越前の清水で丁寧に抽出した定番ブレンド
-                                        </p>
-                                    </div>
-                                    <p class="menu-item-price">¥500</p>
-                                </li>
-                                <li class="menu-item">
+                    <div class="menu-panel panel-drink">
+                        <ul class="menu-list">
+                            <li class="menu-item">
+                                <div class="menu-item-info">
+                                    <p class="menu-item-name">
+                                    ブレンドコーヒー
+                                </p>
+                                <p class="menu-item-desc">
+                                    越前の清水で丁寧に抽出した定番ブレンド
+                                </p>
+                            </div>
+                            <p class="menu-item-price">¥500</p>
+                        </li>
+                        <li class="menu-item">
                                     <div class="menu-item-info">
                                         <p class="menu-item-name">カフェラテ</p>
                                         <p class="menu-item-desc">
@@ -209,13 +196,19 @@
                                     </div>
                                     <p class="menu-item-price">¥600</p>
                                 </li>
-                            </ul>
-                        </div>
-                        <!-- /.panel-drink -->
-
-                        <!-- フード -->
-                        <div class="menu-panel panel-food">
-                            <ul class="menu-list">
+                        </ul>
+                    </div>
+                 <!-- /. panel-drink-->
+                </div>
+                <!-- /. menu-drink-->
+                 <!-- フード -->
+                 <div class="menu-food">
+                    <div class="menu-title food">
+                        <h2 class="menu-title-text">フード</h2>
+                        <p class="menu-text">Food</p>
+                    </div>
+                    <div class="menu-panel panel-food">
+                        <ul class="menu-list">
                                 <li class="menu-item">
                                     <div class="menu-item-info">
                                         <p class="menu-item-name">
@@ -261,11 +254,18 @@
                                     <p class="menu-item-price">¥650</p>
                                 </li>
                             </ul>
-                        </div>
-                        <!-- /.panel-food -->
-
-                        <!-- スイーツ -->
-                        <div class="menu-panel panel-sweets">
+                    </div>
+                    <!-- /. menu-panel panel-food-->
+                 </div>
+                 <!-- /. menu-food-->
+                 <!-- スイーツ -->
+                  <div class="menu-sweets">
+                    <div class="menu-title sweet">
+                        <h2 class="menu-title-text">スイーツ</h2>
+                        <p class="menu-text">Sweet</p>
+                    </div>
+                    <!-- /. menu-title sweet-->
+                        <div class="menu-panel panel-sweet">
                             <ul class="menu-list">
                                 <li class="menu-item">
                                     <div class="menu-item-info">
@@ -313,58 +313,31 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- /.panel-sweets -->
-                    </div>
-                    <!-- /.menu-panels -->
-                </div>
-                <!-- /.menu-inner -->
-            </section>
+                        <!-- ./ menu-panel panel-sweet -->
+                  </div>
+                  <!-- /. menu-sweets-->
+            </div>
+            <!-- /. menu-panels -->
+        </section>
+        <!-- /. menu-->
 
-            <!-- ========== INTRODUCTION ========== -->
-            <section class="introduction">
-                <div class="introduction-inner">
-                    <div class="major-item">店舗紹介</div>
-                    <p class="introduction-lead">
-                        海と森が交わる、越前のちいさなカフェ。
-                    </p>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <div class="feature-icon">01</div>
-                            <h3 class="feature-title">地元素材へのこだわり</h3>
-                            <p class="feature-desc">
-                                越前の海と大地が育てた旬の食材を厳選。地元農家や越前港の漁師たちと連携し、新鮮な恵みをそのままにお届けします。
-                            </p>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-icon">02</div>
-                            <h3 class="feature-title">丁寧に淹れる一杯</h3>
-                            <p class="feature-desc">
-                                厳選した豆を一杯ずつハンドドリップで丁寧に抽出。コーヒーの香りと共に、木の実が育つようなゆったりとした時間をどうぞ。
-                            </p>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-icon">03</div>
-                            <h3 class="feature-title">海を望む開放的な空間</h3>
-                            <p class="feature-desc">
-                                越前海岸を一望できる大きな窓が自慢の店内。波の音と潮風を感じながら、ここでしか味わえない特別なひとときをお過ごしください。
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            <!-- /.introduction -->
-
-            <!-- ========== ACCESS ========== -->
-            <section class="access">
+        <!-- ========== ACCESS ========== -->
+            <section class="access" id="access">
                 <div class="access-inner">
                     <div class="major-item">アクセス</div>
                     <div class="access-content">
-                        <!-- マッププレースホルダー -->
+                        <!-- Google マップ埋め込み -->
                         <div class="access-map">
-                            <div class="map-placeholder">
-                                <p>MAP</p>
-                                <span>Echizen-cho, Fukui</span>
-                            </div>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43390.73099107655!2d136.22181322431683!3d36.06824121275469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff8beaf3b742b4f%3A0xa41b1476580dbbbd!2z56aP5LqV55yM56aP5LqV5biC!5e0!3m2!1sja!2sjp!4v1777773380738!5m2!1sja!2sjp"
+                                width="100%"
+                                height="100%"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="カフェきのみ アクセスマップ"
+                            ></iframe>
                         </div>
                         <!-- アクセス情報 -->
                         <div class="access-info">
@@ -410,7 +383,7 @@
             <!-- /.access -->
 
             <!-- ========== CONTACT ========== -->
-            <section class="contact">
+            <section class="contact" id="contact">
                 <div class="contact-inner">
                     <div class="major-item">お問合せ</div>
                     <p class="contact-lead">
@@ -480,41 +453,75 @@
             </section>
             <!-- /.contact -->
 
-        </main>
-
         <!-- ========== FOOTER ========== -->
         <footer class="site-footer">
             <div class="footer-inner">
+                <!-- フッターロゴ -->
+                <figure class="footer-logo">
+                    <img src="img/logo-footer.png" alt="ロゴ：コーヒー">
+                </figure>
+
                 <!-- フッターロゴ・キャッチ -->
                 <div class="footer-brand">
                     <p class="footer-logo-text">樹の海</p>
                     <p class="footer-catch">海辺のちいさなカフェ</p>
                 </div>
 
-                <!-- フッターナビ -->
-                <nav class="footer-nav" aria-label="フッターナビゲーション">
-                    <ul class="footer-nav-list">
-                        <li><a href="#concept">コンセプト</a></li>
-                        <li><a href="#menu">メニュー</a></li>
-                        <li><a href="#introduction">店舗紹介</a></li>
-                        <li><a href="#access">アクセス</a></li>
-                        <li><a href="#contact">お問い合わせ</a></li>
-                    </ul>
-                </nav>
+                <div class="footer-inner-container">
+                    <!-- フッターナビ -->
+                    <nav class="footer-nav" aria-label="フッターナビゲーション">
+                        <ul class="footer-nav-list">
+                            <li><a href="#concept">コンセプト</a></li>
+                            <li><a href="#menu">メニュー</a></li>
+                            <li><a href="#access">アクセス</a></li>
+                            <li><a href="#contact">お問い合わせ</a></li>
+                        </ul>
+                    </nav>
 
-                <!-- 店舗情報 -->
-                <div class="footer-info">
-                    <p><span>住所</span>福井県丹生郡越前町〇〇〇</p>
-                    <p><span>営業時間</span>10:00 〜 17:00</p>
-                    <p><span>定休日</span>火曜日・水曜日</p>
-                    <p><span>TEL</span>0778-〇〇-〇〇〇〇</p>
+                    <!-- 店舗情報 -->
+                    <div class="footer-info">
+                        <p><span>住所</span>福井県丹生郡越前町〇〇〇</p>
+                        <p><span>営業時間</span>10:00 〜 17:00</p>
+                        <p><span>定休日</span>火曜日・水曜日</p>
+                        <p><span>TEL</span>0778-〇〇-〇〇〇〇</p>
+                    </div>
+                </div>
+
+                <div class="sns-logo footer-sns-logo">
+                    <a href="#" aria-label="Instagram" class="icon-link">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                            <path
+                                d="M224.3 141a115 115 0 1 0 -.6 230 115 115 0 1 0 .6-230zm-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1 -.6-149.2zm93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1 -53.6 0zm129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="X" class="icon-link">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                            <path
+                                d="M357.2 48L427.8 48 273.6 224.2 455 464 313 464 201.7 318.6 74.5 464 3.8 464 168.7 275.5-5.2 48 140.4 48 240.9 180.9 357.2 48zM332.4 421.8l39.1 0-252.4-333.8-42 0 255.3 333.8z" />
+                        </svg>
+                    </a>
                 </div>
             </div>
+            <!-- /.footer-inner -->
 
             <!-- コピーライト -->
             <div class="footer-copyright">
                 <p>&copy; 2026 kinomi cafe. All Rights Reserved.</p>
             </div>
         </footer>
-    </body>
+    </main>
+
+    <script>
+        // ナビゲーションリンクをクリックしたらハンバーガーメニューを閉じる
+        document.querySelectorAll('.nav-list a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('nav-toggle').checked = false;
+            });
+        });
+    </script>
+
+</body>
+
 </html>
