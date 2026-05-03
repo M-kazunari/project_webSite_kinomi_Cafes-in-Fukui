@@ -710,9 +710,13 @@ img {
 
 /* ロゴ設定 */
 .concept-layout .concept-logo {
-    justify-self: center;
+    margin-inline: auto;
     width: 250px;
     height: 250px;
+}
+.concept-layout .concept-logo img {
+    display: block;
+    margin-inline: auto;
 }
 
 .concept-title {
